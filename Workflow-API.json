@@ -1,0 +1,157 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1V2GADGsWixHSvAY7lS5p9aunU5NlwhTb0SCQhqgOsrw",
+          "mode": "list",
+          "cachedResultName": "ลงทะเบียน-67700300 (การตอบกลับ)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1V2GADGsWixHSvAY7lS5p9aunU5NlwhTb0SCQhqgOsrw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1868354198,
+          "mode": "list",
+          "cachedResultName": "Register",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1V2GADGsWixHSvAY7lS5p9aunU5NlwhTb0SCQhqgOsrw/edit#gid=1868354198"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c8beb876-4abc-4d6e-a73a-65be3a02423e",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "NYYAjODxJOuSzOsZ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c9e83c28-3159-4543-b34f-2cac4f84ec8a",
+              "name": "Edit",
+              "value": "={{ $json['ประทับเวลา'] }}",
+              "type": "string"
+            },
+            {
+              "id": "5ed8f38d-bc5c-4037-8c60-db5413270917",
+              "name": "id",
+              "value": "={{ $json['รหัสนักศึกษา'] }}",
+              "type": "number"
+            },
+            {
+              "id": "02d9f6b7-cf39-4ddb-b4d5-b3c473538f99",
+              "name": "fullname",
+              "value": "={{ $json['ชื่อ-นามสกุล'] }}",
+              "type": "string"
+            },
+            {
+              "id": "763976ed-4931-4af8-944e-15904fc5d8f3",
+              "name": "department",
+              "value": "={{ $json['คณะ'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        0
+      ],
+      "id": "e019ae14-5920-4246-a4c4-eac48c710579",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "path": "data",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a00cca46-f4d3-4638-9242-abac8f591047",
+      "name": "Webhook",
+      "webhookId": "298bfa84-bb16-40f7-ac77-1784b1f54079"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        624,
+        0
+      ],
+      "id": "908aa068-2ab1-4212-a92a-25a277050eb1",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "1666524e-96f3-4f83-8174-e6499057869b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3bc017a1b78397f5301336ff18f7d50465535542b3d3b519ed94003e668a2ed7"
+  },
+  "id": "NOFrmZ7ytTpjBg6U",
+  "tags": []
+}
