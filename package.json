@@ -1,0 +1,25 @@
+{
+  "name": "n8n_api",
+  "version": "1.0.0",
+  "description": "67700300 Suriya Ternin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "vue-cli-service serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuriyaTernin/n8n_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SuriyaTernin/n8n_api/issues"
+  },
+  "homepage": "https://github.com/SuriyaTernin/n8n_api#readme",
+  "dependencies": {
+    "@vue/cli-service": "^5.0.9"
+  }
+}
